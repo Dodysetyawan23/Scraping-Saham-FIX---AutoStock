@@ -1,0 +1,60 @@
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Stock Prediction for {{ ticker }}</h1>
+
+    <div class="row">
+        <!-- Evaluation Metrics -->
+        <div class="col-md-6">
+            <div class="card mb-4 shadow-sm">
+                <div class="card-header">
+                    <h3 class="card-title">Holt-Winters Evaluation Metrics</h3>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><strong>MAPE:</strong> {{ hw_evaluation['mape'] }}</li>
+                        <li class="list-group-item"><strong>RMSE:</strong> {{ hw_evaluation['rmse'] }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card mb-4 shadow-sm">
+                <div class="card-header">
+                    <h3 class="card-title">Prophet Evaluation Metrics</h3>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><strong>MAPE:</strong> {{ prophet_evaluation['mape'] }}</li>
+                        <li class="list-group-item"><strong>RMSE:</strong> {{ prophet_evaluation['rmse'] }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Visualizations -->
+    <h2 class="text-center my-4">Visualizations</h2>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card mb-4 shadow-sm">
+                <div class="card-header text-center">
+                    <h3 class="card-title">Holt-Winters Prediction</h3>
+                </div>
+                <div class="card-body text-center">
+                    <img src="{{ plot_hw }}?{{ timestamp }}" alt="Holt-Winters Plot" class="img-fluid rounded">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-12">
+            <div class="card mb-4 shadow-sm">
+                <div class="card-header text-center">
+                    <h3 class="card-title">Prophet Prediction</h3>
+                </div>
+                <div class="card-body text-center">
+                    <img src="{{ plot_prophet }}?{{ timestamp }}" alt="Prophet Plot" class="img-fluid rounded">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
